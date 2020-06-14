@@ -1,0 +1,514 @@
+/*
+Theme Name: Risen Child Demo Theme
+Theme URI: https://churchthemes.com/themes/risen
+Author: churchthemes.com
+Author URI: https://churchthemes.com
+Description: The demo child theme. Enables style picker and disables contact form sending.
+Copyright: (c) 2012-2016 DreamDolphin Media, LLC
+Template: risen
+Version: 2.3.1
+*/
+
+/*****************************************
+ * STYLE PICKER
+ *****************************************/
+
+/* Shadows and Background */
+
+#style-picker,
+#style-picker-toggle-inner,
+.colorpicker,
+#background-image-options {
+
+	background: #fff;
+
+	-webkit-border-top-right-radius: 6px;
+	moz-border-radius-topright: 6px;
+	border-top-right-radius: 6px;
+	-webkit-border-bottom-right-radius: 6px;
+	moz-border-radius-bottomright: 6px;
+	border-bottom-right-radius: 6px;
+
+	-moz-box-shadow: 0px 0px 20px #000; /* Old Firefox */
+	-webkit-box-shadow: 0px 0px 20px #000; /* Old Safari, Chrome */
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Font */
+
+#style-picker,
+#style-picker select,
+#style-picker input {
+	font-family: Arial, Helvetica, sans-serif !important;
+	font-size: 11px; /* not em, don't want to scale */
+	line-height: 20px; /* not em, don't want to scale */
+	color: #717171;
+}
+
+/* Main Container */
+
+#style-picker {
+	display: none;
+	z-index: 15000;
+	position: fixed;
+	top: 10%;
+	left: 0px;
+	width: 160px;
+	padding: 14px 14px 12px 14px;
+}
+
+	/* Open/Close Icon */
+
+
+	#style-picker-toggle {
+		position: absolute;
+		top: 20%;
+		left: 188px;
+		overflow: hidden; /* help chop off left shadow */
+		padding: 20px 20px 20px 0; /* make space for shadow on top, right and bottom */
+	}
+
+		#style-picker-toggle-inner {
+			margin-left: -10px; /* help chop off left shadow */
+			padding: 6px 6px 6px 13px;
+		}
+
+		#style-picker-close {
+			display: none;
+		}
+
+		#style-picker-toggle a span {
+			display: block;
+			width: 32px;
+			height: 32px;
+		}
+
+		#style-picker-open span {
+			background-image: url(images/wdd-color-palette.png); /* palette image courtesy of http://www.webdesignerdepot.com/2010/07/200-exclusive-free-icons-reflection/ */
+		}
+
+		#style-picker-close span {
+			background-image: url(images/close.png);
+		}
+
+	/* Fields Side by Side */
+
+	.style-picker-field {
+		border-bottom: 1px solid transparent; /* margin fix */
+		margin-bottom: 2px;
+		clear: both;
+	}
+
+		.style-picker-field label {
+			font-weight: bold;
+			float: left;
+			width: 50%;
+			padding-top: 2px;
+		}
+
+		.style-picker-field .style-picker-value {
+			float: left;
+			width: 50%
+		}
+
+	/* Fields Full Width */
+
+	.style-picker-field-full {
+		margin-bottom: 6px;
+	}
+
+		.style-picker-field-full label {
+			font-weight: bold;
+		}
+
+		.style-picker-field-full .style-picker-value {
+
+		}
+
+	/* Last Field */
+
+	.style-picker-last-field {
+		margin-bottom: 0px;
+	}
+
+	/* Base Style */
+
+	#base-style-light {
+		margin-right: 10px;
+	}
+
+		#base-style-light div {
+			background-color: #f9f9f9;
+		}
+
+		#base-style-light div.base-style-selected {
+			background-image: url(images/check-dark.png);
+			background-position: bottom right;
+			background-repeat: no-repeat;
+		}
+
+	#base-style-dark div {
+		background-color: #777;
+	}
+
+		#base-style-dark div.base-style-selected {
+			background-image: url(images/check-light.png);
+			background-position: bottom right;
+			background-repeat: no-repeat;
+		}
+
+	/* Background Image Gallery */
+
+	#background_image_preset div[style*=no-image] {
+		background-image: url(images/backgrounds/no-image-tiny.png) !important;
+	}
+
+	#background-image-options {
+		z-index: 11000;
+		display: none;
+		width: 205px;
+		position: absolute;
+		margin: 0 0 0 -6px;
+		padding: 6px 26px 8px 6px;
+		background-color: #f3f3f3;
+		border: 2px solid #ddd;
+		-webkit-border-radius: 6px;
+		moz-border-radius: 6px;
+		border-radius: 6px;
+	}
+
+		#background-image-options-close {
+			position: absolute;
+			top: 5px;
+			right: 6px;
+			width: 22px;
+			height: 22px;
+			background-image: url(images/colorpicker/custom_submit.png);
+			background-position: 0 0;
+			background-repeat: no-repeat;
+			cursor: pointer;
+		}
+
+			#background-image-options-close:hover {
+				background-position: 0 -22px;
+			}
+
+			#background-image-options .style-swatch {
+				position: relative;
+				display: block;
+				float: left;
+				width: 32px;
+				height: 32px;
+				margin: 4px;
+			}
+
+				#background-image-options .style-swatch[data-file^=no-image] div {
+					background-image: url(images/backgrounds/no-image-thumb.png) !important;
+				}
+
+				#background-image-options .style-swatch div:hover {
+					border-color: #ccc; /* IE8 */
+					border-color: rgba(0, 0, 0, 0.1);
+				}
+
+				#background-image-options .style-swatch.background-image-selected div {
+					border: 2px solid #ccc; /* IE8 */
+					border: 2px solid rgba(0, 0, 0, 0.3);
+					position: relative;
+					top: -1px;
+					left: -1px;
+				}
+
+				#background-image-options .style-swatch span.colorable-background-image {
+					display: block;
+					position: absolute;
+					bottom: 0px;
+					right: 0px;
+					width: 16px;
+					height: 16px;
+					background: url(images/wdd-paint-bucket.png) no-repeat center center;
+					cursor: pointer;
+				}
+
+	/* Plus */
+
+	#style-background-plus {
+		display: inline-block;
+		margin-left: 2px;
+		width: 18px;
+		height: 19px;
+		background-image: url(images/plus.png);
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: 8px 8px;
+	}
+
+	/* <select> */
+
+	#style-picker select {
+		width: 100% !important;
+		height: 2.3em !important;
+		min-width: 0; /* theme may have it set */
+		padding: 4px 4px 4px 4px !important;
+		border: 1px solid #e9e9e9;
+		background-image: url(images/select-bg.png);
+		background-position: right center;
+		background-color: #f9f9f9;
+		background-size: 300px;
+		line-height: 1.5em !important;
+		font-size: 1em;
+		color: #888;
+		cursor: pointer;
+		-webkit-appearance:	none; /* hide arrow Chrome/Safari */
+		-moz-appearance:	none; /* someday this will work */
+	}
+
+	#style-picker select::-ms-expand {
+	    display: none;
+	}
+
+		#style-picker select:hover {
+			background-image: url(images/select-bg-active.png);
+			background-size: 300px;
+			border-color: rgba(0, 0, 0, 0.12);
+		}
+
+	/* Restore Defaults */
+
+	#style-picker-defaults {
+		display: block;
+		margin-top: 12px;
+		text-align: center;
+		color: #222 !important;
+	}
+
+	/* Hide Stuff */
+
+	#style-background-plus.hidden,
+	#background_color.hidden {
+		visibility: hidden;
+	}
+
+/* ColorPicker - MIT/GPL License (http://www.eyecon.ro/colorpicker/) */
+
+.colorpicker-selector,
+.style-swatch {
+	display: inline-block;
+	width: 22px;
+	height: 22px;
+	-moz-border-radius: 2px; /* FF */
+	-webkit-border-radius: 2px; /* Safari, Chrome */
+	border-radius: 2px; /* modern browsers */
+}
+
+.colorpicker-selector div,
+.style-swatch div {
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	-moz-border-radius: 2px; /* FF */
+	-webkit-border-radius: 2px; /* Safari, Chrome */
+	border-radius: 2px; /* modern browsers */
+	border: 1px solid #e9e9e9;
+	border-color: #ccc; /* IE8 */
+	border-color: rgba(0, 0, 0, 0.1);
+	background-color: #fff; /* for patterns */
+	background-position: center center;
+}
+
+	.colorpicker-selector div:hover,
+	.style-swatch div:hover {
+		border-color: #aaa; /* IE8 */
+		border-color: rgba(0, 0, 0, 0.25);
+	}
+
+.colorpicker {
+	z-index: 20000;
+	display: none;
+	width: 235px;
+	height: 170px;
+	overflow: hidden;
+	position: absolute;
+	margin: 6px 0 0 -6px;
+	background-image: url(images/colorpicker/custom_background.png);
+	background-color: #f3f3f3;
+	border: 2px solid #ddd;
+	font-family: Arial, Helvetica, sans-serif;
+	-webkit-border-radius: 6px;
+	moz-border-radius: 6px;
+	border-radius: 6px;
+}
+.colorpicker_color {
+	width: 150px;
+	height: 150px;
+	left: 11px;
+	top: 10px;
+	position: absolute;
+	background: #f00;
+	overflow: hidden;
+	cursor: crosshair;
+}
+.colorpicker_color div {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 150px;
+	height: 150px;
+	background: url(images/colorpicker/colorpicker_overlay.png);
+}
+.colorpicker_color div div {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 11px;
+	height: 11px;
+	overflow: hidden;
+	background: url(images/colorpicker/colorpicker_select.gif);
+	margin: -5px 0 0 -5px;
+}
+.colorpicker_hue {
+	position: absolute;
+	top: 10px;
+	left: 168px;
+	width: 35px;
+	height: 150px;
+	cursor: n-resize;
+}
+.colorpicker_hue div {
+	position: absolute;
+	width: 35px;
+	height: 9px;
+	overflow: hidden;
+	background: url(images/colorpicker/custom_indic.gif) left top;
+	margin: -4px 0 0 0;
+	left: 0px;
+}
+.colorpicker_new_color,
+.colorpicker_current_color,
+.colorpicker input,
+.colorpicker_hex,
+.colorpicker_field {
+	display: none;
+}
+.colorpicker_submit {
+	position: absolute;
+	width: 22px;
+	height: 22px;
+	background: url(images/colorpicker/custom_submit.png) top;
+	right: 5px;
+	top: 6px;
+	overflow: hidden;
+	cursor: pointer;
+}
+.colorpicker_focus {
+	background-position: center;
+}
+.colorpicker_hex.colorpicker_focus {
+	background-position: bottom;
+}
+.colorpicker_submit.colorpicker_focus {
+	background-position: bottom;
+}
+.colorpicker_slider {
+	background-position: bottom;
+}
+
+/*****************************************
+ * RETINA
+ *****************************************/
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.25), only screen and (min-resolution: 120dpi), only screen and (-o-min-device-pixel-ratio: 5/4) {
+
+	#style-picker-open span {
+		background-image: url(images/wdd-color-palette@2x.png);
+		background-size: 100%;
+	}
+
+	#style-picker-close span {
+		background-image: url(images/close@2x.png);
+		background-size: 100%;
+	}
+
+	#base-style-dark div.base-style-selected {
+		background-image: url(images/check-light@2x.png);
+		background-size: 11px;
+	}
+
+	#base-style-light div.base-style-selected {
+		background-image: url(images/check-dark@2x.png);
+		background-size: 11px;
+	}
+
+	#background-image-options div.style-swatch[data-file^=no-image] div {
+		background-image: url(images/backgrounds/no-image-thumb@2x.png) !important;
+		background-size: 100% !important;
+	}
+
+	#background_image_preset div[style*=no-image] {
+		background-image: url(images/backgrounds/no-image-tiny@2x.png) !important;;
+		background-size: 100% !important; /* more readable on Retina and regular */
+	}
+
+	#background-image-options .style-swatch span.colorable-background-image {
+		background-image: url(images/wdd-paint-bucket@2x.png);
+		background-size: 18px;
+	}
+
+	.colorpicker {
+		background-image: url(images/colorpicker/custom_background@2x.png);
+		background-size: 356px;
+	}
+
+	.colorpicker_color div div {
+		background-image: url(images/colorpicker/colorpicker_select@2x.png);
+		background-size: 100%;
+	}
+
+	.colorpicker_hue div {
+		background-image: url(images/colorpicker/custom_indic@2x.gif);
+		background-size: 100%;
+	}
+
+	.colorpicker_submit,
+	#background-image-options-close {
+		background-image: url(images/colorpicker/custom_submit@2x.png);
+		background-size: 100%;
+	}
+
+	#style-picker select {
+		background-image: url(images/select-bg@2x.png);
+		background-size: 300px !important;
+	}
+
+		#style-picker select:hover {
+			background-image: url(images/select-bg-active@2x.png);
+			background-size: 300px !important;
+		}
+
+	#style-background-plus {
+		background-image: url(images/plus@2x.png);
+	}
+
+}
+
+/*****************************************
+ * MOBILE DEVICES
+ *****************************************/
+
+/* Hide style picker on small screens */
+@media only screen and (max-width: 480px) {
+
+	/* Hide style picker on small screens */
+
+	#style-picker {
+		left: -10000px;
+		visibility: hidden;
+	}
+
+}
+
+/* Hide style picker on tablets (requires Modernizr w/touch) */
+.touch #style-picker {
+	left: -10000px;
+	visibility: hidden;
+}

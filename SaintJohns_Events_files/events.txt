@@ -1,0 +1,45 @@
+01
+11
+One Big Sunday
+This is a description of One Big Sunday.  It's long and has no new line characters placed in it.
+Big_Sunday.png
+
+12-21-2017
+Christmas Dinner
+This is a description of Christmas Dinner.
+Christmas_Dinner.png
+
+12-24-2017
+Christmas Service
+Description goes here.
+Christmas_Service.png
+
+05-20-2017
+Community Breakfast
+Description goes here.
+community_breakfast.png
+
+04-11-2017
+Easter Egg Hunt
+Description goes here.
+easter.png
+
+04-03-2017
+Cookie Walk
+Description goes here.
+cookie_walk.png
+
+05-04-2017
+Munchin for Mission
+Description goes here.
+munchin_mission.png
+
+06-04-2017
+Shrove Tuesday
+Description goes here.
+shrove_tuesday.png
+
+07-24-2017
+Yard Sale
+Description goes here.
+yard_sale.png
